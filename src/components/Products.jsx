@@ -3,7 +3,6 @@ import { MyCartContext } from "../context/CartProvider";
 import { toast, ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { dialog } from "framer-motion/client";
 
 function Products() {
   let [products, setProdcuts] = useState([]);
@@ -36,7 +35,7 @@ function Products() {
       toast.success(`${product.title} is added in cart successfully`);
     }
   }
-
+  motion;
   return (
     <>
       <div className="my-15">

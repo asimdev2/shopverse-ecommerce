@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { MyCartContext } from "../context/CartProvider";
-import { div, h1, p } from "framer-motion/client";
+
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 

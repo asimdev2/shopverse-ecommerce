@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 function IndividualProducts() {
   let { id } = useParams();
   const [product, setProduct] = useState([]);
-  const { dispatch } = useContext(MyCartContext);
+  const { cart, dispatch } = useContext(MyCartContext);
 
   useEffect(() => {
     (async () => {
@@ -22,6 +22,17 @@ function IndividualProducts() {
       }
     })();
   }, []);
+
+  function handleAddTOCart(item) {
+    const alreadyExist = cart.find((productItem) => productItem.id === item.id);
+
+    if (alreadyExist) {
+      toast.success("Product is already in Cart");
+    } else {
+      dispatch({ type: "ADD_TO_CART", payload: { ...item, quantity: 1 } });
+      toast.success(`${item.title} is added in cart successfully`);
+    }
+  }
 
   return (
     <>
@@ -47,10 +58,7 @@ function IndividualProducts() {
             <button
               className="bg-cyan-500 p-2 w-full rounded text-white  hover:bg-cyan-600"
               onClick={() => {
-                dispatch({ type: "ADD_TO_CART", payload: item });
-                toast.success(
-                  `${item.title} has been added to your cart successfully`
-                );
+                handleAddTOCart(item);
               }}
             >
               Add To Cart
