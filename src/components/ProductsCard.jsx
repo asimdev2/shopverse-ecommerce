@@ -30,7 +30,7 @@ function ProductsCard() {
             />
             <p className="text-2xl font-extrabold">Casual Shirt For Men</p>
             <p className="">Comfort And Style</p>
-            <p>2000 Sold</p>
+            <p>1000 Sold</p>
           </div>
           <div className="p-6 flex flex-col text-center font-serif space-y-2 hover:scale-105 transition-transform duration-300">
             <img
@@ -40,7 +40,7 @@ function ProductsCard() {
             />
             <p className="text-2xl font-extrabold">Casual Shirt For Men</p>
             <p className="">Comfort And Style</p>
-            <p>2000 Sold</p>
+            <p>1500 Sold</p>
           </div>
         </div>
         <div className="text-center items-center">
