@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyCartContext } from "../context/CartProvider";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { dialog } from "framer-motion/client";
 
 function Products() {
   let [products, setProdcuts] = useState([]);
-  const { dispatch } = useContext(MyCartContext);
+  const { cart, dispatch } = useContext(MyCartContext);
 
   useEffect(() => {
     async function productsFetching() {
@@ -24,6 +25,17 @@ function Products() {
     }
     productsFetching();
   }, []);
+
+  function handleAddTOCart(product) {
+    const alreadyExist = cart.find((item) => item.id === product.id);
+
+    if (alreadyExist) {
+      toast.success("Product is already in Cart");
+    } else {
+      dispatch({ type: "ADD_TO_CART", payload: { ...product, quantity: 1 } });
+      toast.success(`${product.title} is added in cart successfully`);
+    }
+  }
 
   return (
     <>
@@ -59,13 +71,7 @@ function Products() {
                 <button
                   className=" bg-cyan-500 p-2 w-full rounded text-white  hover:bg-cyan-600"
                   onClick={() => {
-                    dispatch({
-                      type: "ADD_TO_CART",
-                      payload: { ...product, quantity: 1 },
-                    });
-                    toast.success(
-                      `"${product.title}" has been added to your cart`
-                    );
+                    handleAddTOCart(product);
                   }}
                 >
                   Add to cart
