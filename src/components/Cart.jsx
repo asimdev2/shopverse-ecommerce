@@ -25,7 +25,7 @@ export const Cart = () => {
               <Link
                 to={"/products"}
                 style={{ fontSize: "" }}
-                className="p-3 rounded-2xl md:text-2xl  text-white font-serif bg-emerald-700"
+                className="p-3 rounded-2xl   text-white font-serif bg-emerald-700"
               >
                 Start Shopping Now
               </Link>
